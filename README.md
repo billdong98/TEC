@@ -1,4 +1,2 @@
 # TEC
 TEC
-
-Hello
