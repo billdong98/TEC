@@ -216,7 +216,6 @@
         }).then(function(response) {
           var events = response.result.items;
           appendPre('Rest of the Week\'s events:');
-          appendPre('');
           if (events.length > 0) {
             for (i = 0; i < events.length; i++) {
               var event = events[i];
