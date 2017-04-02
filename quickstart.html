@@ -135,27 +135,27 @@
       }
       
       // add event
-      function addEvent() {
-      var event = {
-        'summary': 'insert event',
-        'location': 'insert place',
-        'description': 'description',
-        'start': {
-          'dateTime': '2017-04-02T22:32:00-04:00',
-          'timeZone': 'America/New_York'
-        },
-        'end': {
-          'dateTime': '2017-04-02T22:59:00-04:00',
-          'timeZone': 'America/New_York'
-        }
-      };
-      var request = gapi.client.calendar.events.insert({
-        'calendarId': 'primary',
-        'resource': event
-      });
-      request.execute(function(event) {
-      });
-    }
+         function addEvent(eventName, clubName, description, location, start, end) {
+         var event = {
+           'summary': eventName,
+           'location': location,
+           'description': description,
+           'start': {
+             'dateTime': (start).toISOString(),
+             'timeZone': 'America/New_York'
+           },
+           'end': {
+             'dateTime': (end).toISOString(),
+             'timeZone': 'America/New_York'
+           }
+         };
+         var request = gapi.client.calendar.events.insert({
+           'calendarId': 'primary',
+           'resource': event
+         });
+         request.execute(function(event) {
+         });
+       }
       
       /**
        * Print the summary and start datetime/date of the next ten events in
@@ -244,49 +244,41 @@
       }
       
       function returnForm() {
-        var error = '';
-        var eventName = document.getElementById("nameOfEvent").value;
-        if (!eventName)
-          error += 'Event Name, ';
-        var clubName = document.getElementById("nameOfOrg").value;
-        if (!clubName)
-          error += 'Club Name, ';
-        var description = document.getElementById("descOfEvent").value;
-        if (!description)
-          error += 'Description, ';
-        var location = document.getElementById("locOfEvent").value;
-        if (!location)
-          error += 'Location, ';
-        var eventDate = $( "#eventdate" ).datepicker( "getDate" );
-        if (!eventDate)
-          error += 'Event Date, ';
-        var startTime = $( "#starttime" ).timepicker( "getTime" );
-        if (!startTime)
-          error += 'Start Time, ';
-        var endTime = $( "#endtime" ).timepicker( "getTime" );
-        if (!endTime)
-          error += 'End Time ';
-        if (error) {
-          window.alert(error + 'are left blank');
-          return false;
-        }
-        else if (endTime.getTime() - startTime.getTime() <= 0) {
-          window.alert("Event cannot end before it starts!");
-          return false;
-        }
-        
+          window.alert("submitted!");
+          var error = '';
+          var eventName = document.getElementById("nameOfEvent").value;
+          if (!eventName)
+            error += 'Event Name, ';
+          var clubName = document.getElementById("nameOfOrg").value;
+          if (!clubName)
+            error += 'Club Name, ';
+          var description = document.getElementById("descOfEvent").value;
+          if (!description)
+            error += 'Description, ';
+          var location = document.getElementById("locOfEvent").value;
+          if (!location)
+            error += 'Location, ';
+          var eventDate = $( "#eventdate" ).datepicker( "getDate" );
+          if (!eventDate)
+            error += 'Event Date, ';
+          var startTime = $( "#starttime" ).timepicker( "getTime" );
+          if (!startTime)
+            error += 'Start Time, ';
+          var endTime = $( "#endtime" ).timepicker( "getTime" );
+          if (!endTime)
+            error += 'End Time ';
+          if (error) {
+            window.alert(error + 'are left blank');
+            return false;
+          }
+          var start = new Date(eventDate.toString().substring(0, eventDate.toString().indexOf(':') - 2) + startTime.toString().substring(startTime.toString().indexOf(':') - 2));
+          var end = new Date(eventDate.toString().substring(0, eventDate.toString().indexOf(':') - 2) + endTime.toString().substring(endTime.toString().indexOf(':') - 2));
 
-        /*
-        Event newEvent = new Event()
-            .setSummary(eventName)
-            .setDate(eventDate);
-        */
-
-
-        window.alert("Submitted!");
-        return true;
-            
-      } 
+          addEvent(eventName, clubName, description, location, start, end);
+              
+          return true;
+              
+        } 
       
     </script>
 
