@@ -86,7 +86,7 @@
         if (isSignedIn) {
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
-          addEvent();
+          //addEvent();
           listUpcomingEvents();
           listFutureEvents();
         } else {
@@ -139,7 +139,7 @@
           'timeZone': 'America/New_York'
         },
         'end': {
-          'dateTime': '2017-04-01T23:45:00-04:00',
+          'dateTime': '2017-04-01T23:59:00-04:00',
           'timeZone': 'America/New_York'
         }
       };
@@ -192,21 +192,23 @@
         });
       }
       function listFutureEvents() {
-        var week = new Date();
-        var tomorrow = new Date();
-        week.setDate(week.getDate() + 7);
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        week.setHours(0);
+
+        var earliestEnd = new Date();
+        var latestStart = new Date();
+        earliestEnd.setDate(earliestEnd.getDate() + 1);
+        latestStart.setDate(latestStart.getDate() + 7);
+        earliestEnd.setHours(0);
+        latestStart.setHours(0);
         gapi.client.calendar.events.list({
           'calendarId': 'primary',
-          'timeMin': (tomorrow).toISOString(),
-          'timeMax': (week).toISOString(),
+          'timeMin': (earliestEnd).toISOString(),
+          'timeMax': (latestStart).toISOString(),
           'showDeleted': false,
           'singleEvents': true,
           'orderBy': 'startTime'
         }).then(function(response) {
           var events = response.result.items;
-          appendPre('Following Week\'s events:');
+          appendPre('Rest of the Week\'s events:');
           appendPre('');
           if (events.length > 0) {
             for (i = 0; i < events.length; i++) {
@@ -220,7 +222,7 @@
               if (location.indexOf(',') > 0) {
                 location = location.substring(0, location.indexOf(','));
               }
-              appendPre(event.summary + ' ' + whenStart + ' to ' + whenEnd + ' at ' + location)
+              appendPre(event.summary + ' ' + whenStart + ' to ' + whenEnd + ' at ' + location);
             }
           } else {
             appendPre('No upcoming events found.');
