@@ -29,6 +29,8 @@
       <input type="text" id="nameOfOrg"/><br>
       Description of event:<br>
       <input type="text" id="descOfEvent"/><br>
+      Location:<br>
+      <input type="text" id="locOfEvent"/><br>
       Date:<br>
       <input type="text" id="eventdate"><br>
       Start time:<br>
@@ -235,6 +237,7 @@
         var eventName = document.getElementById("nameOfEvent").value;
         var clubName = document.getElementById("nameOfOrg").value;
         var description = document.getElementById("descOfEvent").value;
+        var location = document.getElementById("locOfEvent").value;
         var eventDate = $( "#eventdate" ).datepicker( "getDate" );
         var startTime = $( "#starttime" ).timepicker( "getTime" );
         var endTime = $( "#endtime" ).timepicker( "getTime" );
