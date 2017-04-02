@@ -193,6 +193,11 @@
           }
         });
       }
+      function convertToDate(datetime) {
+        return new Date(datetime.toString());
+      }
+
+      // events for the rest of the week
       function listFutureEvents() {
 
         var earliestEnd = new Date();
@@ -224,7 +229,7 @@
               if (location.indexOf(',') > 0) {
                 location = location.substring(0, location.indexOf(','));
               }
-              appendPre(event.summary + ' ' + whenStart + ' to ' + whenEnd + ' at ' + location);
+              appendPre(event.summary + ' ' + whenStart + ' to ' + whenEnd + ' at ' + location + ' on ' + convertToDate(event.start.dateTime).toDateString());
             }
           } else {
             appendPre('No upcoming events found.');
