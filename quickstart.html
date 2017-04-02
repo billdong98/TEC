@@ -5,6 +5,7 @@
     <meta charset='utf-8' />
     <link rel="stylesheet" href="jquery-ui-1.12.1\jquery-ui.min.css">
     <link rel="stylesheet" href="jquery-timepicker-master\jquery.timepicker.css">
+    <link rel="stylesheet" href="form.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="jquery-ui-1.12.1\jquery-ui.js"></script>
     <script src="jquery-timepicker-master\jquery.timepicker.js"></script>
@@ -17,13 +18,17 @@
   </script>
   </head>
   <body>
-    <p>Tiger Events Calendar</p>
+    <h1>Tiger Events Calendar</h1>
 
     <!--Add buttons to initiate auth sequence and sign out-->
-
+    <div class="basic-grey">
     <form id="form" onsubmit="return false">
       Event name:<br>
       <input type="text" id="nameOfEvent"/><br>
+      Club/Organization name:<br>
+      <input type="text" id="nameOfOrg"/><br>
+      Description of event:<br>
+      <input type="text" id="descOfEvent"/><br>
       Date:<br>
       <input type="text" id="eventdate"><br>
       Start time:<br>
@@ -32,6 +37,7 @@
       <input type="text" id="endtime"><br>
       <input type="submit" onclick="returnForm"/>
     </form>
+    </div>
 
     <button id="authorize-button" style="display: none;">Authorize</button>
     <button id="signout-button" style="display: none;">Sign Out</button>
@@ -223,9 +229,11 @@
       }
       /*
       function returnForm() {
+
         var eventDate = $( "#eventdate" ).datepicker( "getDate" );
         var startTime = $( "#starttime" ).timepicker( "getTime" );
         var endTime = $( "#endtime" ).timepicker( "getTime" );
+
         Event newEvent = new Event()
             .setSummary(eventName)
             .setDate(eventDate);
