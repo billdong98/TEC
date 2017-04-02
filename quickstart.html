@@ -4,11 +4,14 @@
     <title>TEC</title>
     <meta charset='utf-8' />
     <link rel="stylesheet" href="jquery-ui-1.12.1\jquery-ui.min.css">
+    <link rel="stylesheet" href="jquery-timepicker-master\jquery.timepicker.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="jquery-ui-1.12.1\jquery-ui.js"></script>
+    <script src="jquery-timepicker-master\jquery.timepicker.js"></script>
     <script>
     $( function() {
       $( "#datepicker" ).datepicker();
+      $( "#timepicker" ).timepicker();
     } );
   </script>
   </head>
@@ -22,6 +25,8 @@
       <input type="text" id="nameOfEvent"/><br>
       Date:<br>
       <input type="text" id="datepicker"><br>
+      Start time:<br>
+      <input type="text" id="timepicker"><br>
       <input type="submit" onclick="returnForm"/>
     </form>
 
@@ -72,7 +77,6 @@
         if (isSignedIn) {
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
-          addEvent();
           listUpcomingEvents();
         } else {
           authorizeButton.style.display = 'block';
@@ -113,29 +117,6 @@
         var strTime = hours + ':' + minutes + ' ' + ampm;
         return strTime;
       }
-
-      function addEvent() {
-      var event = {
-        'summary': 'insert event',
-        'location': 'insert place',
-        'description': 'description',
-        'start': {
-          'dateTime': '2017-04-01T23:32:00-04:00',
-          'timeZone': 'America/New_York'
-        },
-        'end': {
-          'dateTime': '2017-04-01T23:45:00-04:00',
-          'timeZone': 'America/New_York'
-        }
-      };
-      var request = gapi.client.calendar.events.insert({
-        'calendarId': 'primary',
-        'resource': event
-      });
-
-      request.execute(function(event) {
-      });
-    }
     
       
       /**
