@@ -159,6 +159,7 @@
        * appropriate message is printed.
        */
       function listUpcomingEvents() {
+        appendPre('');
         var today = new Date();
         var tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
