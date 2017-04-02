@@ -22,7 +22,7 @@
 
     <!--Add buttons to initiate auth sequence and sign out-->
     <div class="tiger-orange">
-    <form id="form" onsubmit="return false">
+    <form id="form-id" onsubmit="returnForm();">
       Event name:<br>
       <input type="text" id="nameOfEvent"/><br>
       Club/Organization name:<br>
@@ -37,7 +37,8 @@
       <input type="text" id="starttime"><br>
       End time:<br>
       <input type="text" id="endtime"><br>
-      <input type="submit" onclick="returnForm"/>
+
+      <input type="submit"/>
     </form>
     </div>
 
@@ -238,8 +239,9 @@
       }
       
       function returnForm() {
-
+        window.alert("submitted!");
         var eventName = document.getElementById("nameOfEvent").value;
+        //window.alert(eventName);
         var clubName = document.getElementById("nameOfOrg").value;
         var description = document.getElementById("descOfEvent").value;
         var location = document.getElementById("locOfEvent").value;
@@ -247,16 +249,18 @@
         var startTime = $( "#starttime" ).timepicker( "getTime" );
         var endTime = $( "#endtime" ).timepicker( "getTime" );
 
-        var pattern =/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/;
-        if(eventDate == null || eventDate == "" || !pattern.test(eventDate)) {
-          alert("Event date was incorrectly input or null. Try MM/DD/YYYY.");
+        // var pattern =/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/;
+        if(eventDate == null || eventDate == "" /*||  !pattern.test(eventDate) */) {
+          alert("Event date was incorrectly input or empty. Your input was " + eventDate + " Try MM/DD/YYYY.");
           return false;
         }
 
-
+        /*
         Event newEvent = new Event()
             .setSummary(eventName)
             .setDate(eventDate);
+        */
+        return true;
             
       } 
       
