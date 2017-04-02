@@ -10,8 +10,9 @@
     <script src="jquery-timepicker-master\jquery.timepicker.js"></script>
     <script>
     $( function() {
-      $( "#datepicker" ).datepicker();
-      $( "#timepicker" ).timepicker();
+      $( "#eventdate" ).datepicker();
+      $( "#starttime" ).timepicker();
+      $( "#endtime" ).timepicker();
     } );
   </script>
   </head>
@@ -26,7 +27,9 @@
       Date:<br>
       <input type="text" id="datepicker"><br>
       Start time:<br>
-      <input type="text" id="timepicker"><br>
+      <input type="text" id="starttime"><br>
+      End time:<br>
+      <input type="text" id="endtime"><br>
       <input type="submit" onclick="returnForm"/>
     </form>
 
@@ -222,8 +225,9 @@
       }
       /*
       function returnForm() {
-        var eventName = document.getElementById("nameOfEvent").value;
-        var eventDate = $( ".selector" ).datepicker( "getDate" );
+        var eventDate = $( "#eventdate" ).datepicker( "getDate" );
+        var startTime = $( "#starttime" ).timepicker( "getTime" );
+        var endTime = $( "#endtime" ).timepicker( "getTime" );
         Event newEvent = new Event()
             .setSummary(eventName)
             .setDate(eventDate);
