@@ -236,7 +236,7 @@
           }
         });
       }
-      /*
+      
       function returnForm() {
 
         var eventName = document.getElementById("nameOfEvent").value;
@@ -247,11 +247,18 @@
         var startTime = $( "#starttime" ).timepicker( "getTime" );
         var endTime = $( "#endtime" ).timepicker( "getTime" );
 
+        var pattern =/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/;
+        if(eventDate == null || eventDate == "" || !pattern.test(eventDate)) {
+          alert("Event date was incorrectly input or null. Try MM/DD/YYYY.");
+          return false;
+        }
+
+
         Event newEvent = new Event()
             .setSummary(eventName)
             .setDate(eventDate);
             
-      } */
+      } 
       
     </script>
 
