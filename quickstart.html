@@ -239,20 +239,31 @@
       
       function returnForm() {
         window.alert("submitted!");
+        var errors = '';
         var eventName = document.getElementById("nameOfEvent").value;
-        //window.alert(eventName);
+        if (!eventName)
+          error += 'Event Name, ';
         var clubName = document.getElementById("nameOfOrg").value;
+        if (!clubName)
+          error += 'Club Name, ';
         var description = document.getElementById("descOfEvent").value;
         var location = document.getElementById("locOfEvent").value;
+        if (!location)
+          error += 'Location, ';
         var eventDate = $( "#eventdate" ).datepicker( "getDate" );
+        if (!eventDate)
+          error += 'Event Date, ';
         var startTime = $( "#starttime" ).timepicker( "getTime" );
+        if (!startTime)
+          error += 'Start Time, ';
         var endTime = $( "#endtime" ).timepicker( "getTime" );
-
-        // var pattern =/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/;
-        if(eventDate == null || eventDate == "" /*||  !pattern.test(eventDate) */) {
-          alert("Event date was incorrectly input or empty. Your input was " + eventDate + " Try MM/DD/YYYY.");
+        if (!endTime)
+          error += 'End Time ';
+        if (error) {
+          window.alert(error + 'are left blank');
           return false;
         }
+        
 
         /*
         Event newEvent = new Event()
