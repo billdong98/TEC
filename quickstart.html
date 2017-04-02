@@ -238,8 +238,7 @@
       }
       
       function returnForm() {
-        window.alert("submitted!");
-        var errors = '';
+        var error = '';
         var eventName = document.getElementById("nameOfEvent").value;
         if (!eventName)
           error += 'Event Name, ';
@@ -263,6 +262,9 @@
           window.alert(error + 'are left blank');
           return false;
         }
+        else if (endTime.getTime() - startTime.getTime() <= 0) {
+          window.alert("Event cannot end before it starts!");
+        }
         
 
         /*
@@ -270,6 +272,9 @@
             .setSummary(eventName)
             .setDate(eventDate);
         */
+
+
+        window.alert("Submitted!");
         return true;
             
       } 
