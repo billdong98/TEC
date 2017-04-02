@@ -3,11 +3,28 @@
   <head>
     <title>Google Calendar API Quickstart</title>
     <meta charset='utf-8' />
+    <link rel="stylesheet" href="jquery-ui.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    $( function() {
+      $( "#datepicker" ).datepicker();
+    } );
+  </script>
   </head>
   <body>
     <p>Google Calendar API Quickstart</p>
 
     <!--Add buttons to initiate auth sequence and sign out-->
+
+    <form id="form" onsubmit="return false">
+      Event name:<br>
+      <input type="text" id="nameOfEvent"/><br>
+      Date:<br>
+      <input type="text" id="datepicker"><br>
+      <input type="submit" onclick="returnForm"/>
+    </form>
+
     <button id="authorize-button" style="display: none;">Authorize</button>
     <button id="signout-button" style="display: none;">Sign Out</button>
 
@@ -131,6 +148,11 @@
             appendPre('No upcoming events found.');
           }
         });
+      }
+
+      function returnForm() {
+        var evName = document.getElementById("nameOfEvent").value;
+        var eventDate = $( ".selector" ).datepicker( "getDate" );
       }
     </script>
 
