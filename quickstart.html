@@ -238,6 +238,10 @@
       }
       
       function returnForm() {
+<<<<<<< HEAD
+=======
+        window.alert("submitted!");
+>>>>>>> abcb4170e90ee3027f9b11a61db3ae3ea88821f8
         var error = '';
         var eventName = document.getElementById("nameOfEvent").value;
         if (!eventName)
@@ -246,6 +250,8 @@
         if (!clubName)
           error += 'Club Name, ';
         var description = document.getElementById("descOfEvent").value;
+        if (!description)
+          error += 'Description, ';
         var location = document.getElementById("locOfEvent").value;
         if (!location)
           error += 'Location, ';
