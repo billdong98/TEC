@@ -1,10 +1,9 @@
-/* Basic Grey */
 
 h1 {
     text-align: center;
     font-family: Helvetica;
 }
-.basic-grey {
+.tiger-orange {
     margin-left:auto;
     margin-right:auto;
     max-width: 500px;
@@ -14,7 +13,7 @@ h1 {
     color: #000000;
     border:1px solid #E4E4E4;
 }
-.basic-grey h1 {
+.tiger-orange h1 {
     font-size: 25px;
     padding: 0px 0px 10px 40px;
     display: block;
@@ -22,15 +21,15 @@ h1 {
     margin: -10px -15px 30px -10px;;
     color: #888;
 }
-.basic-grey h1>span {
+.tiger-orange h1>span {
     display: block;
     font-size: 11px;
 }
-.basic-grey label {
+.tiger-orange label {
     display: block;
     margin: 0px;
 }
-.basic-grey label>span {
+.tiger-orange label>span {
     float: left;
     width: 20%;
     text-align: right;
@@ -38,7 +37,7 @@ h1 {
     margin-top: 10px;
     color: #888;
 }
-.basic-grey input[type="text"], .basic-grey input[type="email"], .basic-grey textarea, .basic-grey select {
+.tiger-orange input[type="text"], .tiger-orange input[type="email"], .tiger-orange textarea, .tiger-orange select {
     border: 1px solid #DADADA;
     color: #888;
     height: 30px;
@@ -54,10 +53,10 @@ h1 {
     -moz-box-shadow: inset 0px 1px 4px #ECECEC;
     -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
 }
-.basic-grey textarea{
+.tiger-orange textarea{
     padding: 5px 3px 3px 5px;
 }
-.basic-grey select {
+.tiger-orange select {
     background: #FFF url('down-arrow.png') no-repeat right;
     background: #FFF url('down-arrow.png') no-repeat right);
     appearance:none;
@@ -69,10 +68,10 @@ h1 {
     height: 35px;
     line-height: 25px;
 }
-.basic-grey textarea{
+.tiger-orange textarea{
     height:100px;
 }
-.basic-grey .button {
+.tiger-orange .button {
     background: #E27575;
     border: none;
     padding: 10px 25px 10px 25px;
@@ -82,6 +81,6 @@ h1 {
     text-shadow: 1px 1px 1px #9E3F3F;
     cursor: pointer;
 }
-.basic-grey .button:hover {
+.tiger-orange .button:hover {
     background: #CF7A7A
 }
