@@ -21,7 +21,7 @@
     <h1>Tiger Events Calendar</h1>
 
     <!--Add buttons to initiate auth sequence and sign out-->
-    <div class="basic-grey">
+    <div class="tiger-orange">
     <form id="form" onsubmit="return false">
       Event name:<br>
       <input type="text" id="nameOfEvent"/><br>
@@ -159,6 +159,7 @@
        * appropriate message is printed.
        */
       function listUpcomingEvents() {
+        appendPre('');
         var today = new Date();
         var tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
@@ -199,6 +200,10 @@
 
       // events for the rest of the week
       function listFutureEvents() {
+<<<<<<< HEAD
+=======
+        appendPre('');
+>>>>>>> origin/master
         var earliestEnd = new Date();
         var latestStart = new Date();
         earliestEnd.setDate(earliestEnd.getDate() + 1);
