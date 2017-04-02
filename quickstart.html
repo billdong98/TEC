@@ -77,6 +77,7 @@
         if (isSignedIn) {
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
+          addEvent();
           listUpcomingEvents();
         } else {
           authorizeButton.style.display = 'block';
@@ -116,7 +117,30 @@
         var strTime = hours + ':' + minutes + ' ' + ampm;
         return strTime;
       }
-    
+      
+      // add event
+      function addEvent() {
+      var event = {
+        'summary': 'insert event',
+        'location': 'insert place',
+        'description': 'description',
+        'start': {
+          'dateTime': '2017-04-01T23:32:00-04:00',
+          'timeZone': 'America/New_York'
+        },
+        'end': {
+          'dateTime': '2017-04-01T23:45:00-04:00',
+          'timeZone': 'America/New_York'
+        }
+      };
+      var request = gapi.client.calendar.events.insert({
+        'calendarId': 'primary',
+        'resource': event
+      });
+
+      request.execute(function(event) {
+      });
+    }
       
       /**
        * Print the summary and start datetime/date of the next ten events in
@@ -158,6 +182,7 @@
           }
         });
       }
+      /*
       function returnForm() {
         var eventName = document.getElementById("nameOfEvent").value;
         var eventDate = $( ".selector" ).datepicker( "getDate" );
@@ -166,6 +191,7 @@
             .setDate(eventDate);
             
       }
+      */
     </script>
 
     <script async defer src="https://apis.google.com/js/api.js"
