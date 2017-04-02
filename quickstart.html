@@ -77,6 +77,7 @@
         if (isSignedIn) {
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
+          addEvent();
           listUpcomingEvents();
         } else {
           authorizeButton.style.display = 'block';
@@ -106,7 +107,6 @@
         var textContent = document.createTextNode(message + '\n');
         pre.appendChild(textContent);
       }
-
       // print a date in readable format (with AM/PM)
       function formatAMPM(string) {
         var hours = string.substring(11, 13);
@@ -117,8 +117,31 @@
         var strTime = hours + ':' + minutes + ' ' + ampm;
         return strTime;
       }
-    
       
+      // adds an event
+      function addEvent() {
+      var event = {
+        'summary': 'insert event',
+        'location': 'insert place',
+        'description': 'description',
+        'start': {
+          'dateTime': '2017-04-01T23:32:00-04:00',
+          'timeZone': 'America/New_York'
+        },
+        'end': {
+          'dateTime': '2017-04-01T23:45:00-04:00',
+          'timeZone': 'America/New_York'
+        }
+      };
+      var request = gapi.client.calendar.events.insert({
+        'calendarId': 'primary',
+        'resource': event
+      });
+
+      request.execute(function(event) {
+      });
+    }
+
       /**
        * Print the summary and start datetime/date of the next ten events in
        * the authorized user's calendar. If no events are found an
@@ -159,7 +182,6 @@
           }
         });
       }
-
       function returnForm() {
         var evName = document.getElementById("nameOfEvent").value;
         var eventDate = $( ".selector" ).datepicker( "getDate" );
