@@ -116,7 +116,7 @@
           'orderBy': 'startTime'
         }).then(function(response) {
           var events = response.result.items;
-          appendPre('Today\'s events (' + today.toDateString() + '):');
+          appendPre('Today\'s events (' + today.toDateString() + '): \n');
           if (events.length > 0) {
             for (i = 0; i < events.length; i++) {
               var event = events[i];
