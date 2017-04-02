@@ -90,8 +90,11 @@
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
           //addEvent();
-          listUpcomingEvents();
-          listFutureEvents();
+          listUpcomingEvents(function() {
+            listFutureEvents(function() {
+              // Functions in order
+            });
+          });
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
@@ -159,7 +162,7 @@
        * the authorized user's calendar. If no events are found an
        * appropriate message is printed.
        */
-      function listUpcomingEvents() {
+      function listUpcomingEvents(callback) {
         var today = new Date();
         var tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
@@ -193,6 +196,9 @@
             appendPre('No upcoming events found.');
           }
         });
+        setTimeout(function() {
+          callback && callback();
+        }, 100);
       }
       function convertToDate(datetime) {
         return new Date(datetime.toString());
