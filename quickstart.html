@@ -125,7 +125,7 @@
               if (!whenStart) {
                 whenStart = event.start.date;
               }
-              appendPre(event.summary + ' ' + whenStart + ' to ' + whenEnd)
+              appendPre(event.summary + ' ' + whenStart + ' to ' + whenEnd + ' @ ' + event.location)
             }
           } else {
             appendPre('No upcoming events found.');
