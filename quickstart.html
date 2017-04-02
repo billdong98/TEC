@@ -238,10 +238,6 @@
       }
       
       function returnForm() {
-<<<<<<< HEAD
-=======
-        window.alert("submitted!");
->>>>>>> abcb4170e90ee3027f9b11a61db3ae3ea88821f8
         var error = '';
         var eventName = document.getElementById("nameOfEvent").value;
         if (!eventName)
@@ -270,6 +266,7 @@
         }
         else if (endTime.getTime() - startTime.getTime() <= 0) {
           window.alert("Event cannot end before it starts!");
+          return false;
         }
         
 
